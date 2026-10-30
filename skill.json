@@ -1,0 +1,10 @@
+{
+  "name": "openclaw-genpark-doc-processor",
+  "version": "1.0.0",
+  "description": "OpenClaw GenPark Doc Processor - Recursive boundary chunking, Markdown header hierarchy DAG synthesis, and lexical token-budget packing with zero external dependencies.",
+  "tools": [
+    "partition_document_by_sliding_window",
+    "parse_markdown_header_hierarchy_dag",
+    "compute_lexical_token_budget_packing"
+  ]
+}
