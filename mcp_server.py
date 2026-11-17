@@ -8,18 +8,9 @@ import json
 from typing import Dict, Any, List
 from client import OpenClawGenParkDocProcessor
 
-try:
-    from mcp.server.fastmcp import FastMCP
-    mcp = FastMCP("openclaw-genpark-doc-processor")
-except ImportError:
-    class MockFastMCP:
-        def __init__(self, name):
-            self.name = name
-        def tool(self):
-            def decorator(f):
-                return f
-            return decorator
-    mcp = MockFastMCP("openclaw-genpark-doc-processor")
+from mcp.server.fastmcp import FastMCP
+
+mcp = FastMCP('openclaw-genpark-doc-processor')
 
 processor = OpenClawGenParkDocProcessor()
 
@@ -55,9 +46,7 @@ def compute_lexical_token_budget_packing(
     return json.dumps(res, indent=2)
 
 def main():
-    sample = "# Header 1\nIntro text\n## Subheader\nDetailed specifications."
-    print("Testing Doc Processor:")
-    print(partition_document_by_sliding_window(sample, 10, 2))
+    mcp.run(transport="stdio")
 
 if __name__ == "__main__":
     main()
